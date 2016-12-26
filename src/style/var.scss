@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+$font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+// 字体颜色
+$primary-color: #108ee9;
+$disabled-color: #ccc;
+$text-color: #666;
+$link-color: #108ee9;
+$link-hover-color: lighten($link-color, 20%);
+$link-active-color: darken($link-color, 5%);
+
+$line-height: 1.5;
+$transition-time: 0.3s;
+$border-color-base: #d9d9d9;
+// animate
+$ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
