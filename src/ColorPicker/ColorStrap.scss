@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+$default-height: 14px;
+$default-width: 4px;
+$top-dis: 3px;
+$border: 1px;
+
+.color-strap {
+    position: relative;
+    cursor: crosshair;
+}
+.strap-pointer {
+    position: absolute;
+    top: -$top-dis;
+    left: 0px;
+    background-color: #fff;
+    display: inline-block;
+    height: $default-height + (2 * $top-dis);
+    width: $default-width;
+    margin-left: 1 - $default-width / 2 - $border;
+    border: $border solid #d4d4d4;
+    pointer-events: none;   // 该节点不会成为鼠标事件的target
+}

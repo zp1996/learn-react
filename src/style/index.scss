@@ -3,19 +3,19 @@
 @import "var";
 
 .clearfix{
-	zoom: 1;
-	&:before, &:after{
-		content: ' ';
-		display: table;
-	}
-	&:after{
-		clear: both;
-		visibility: hidden;
-		font-size: 0;
-		height: 0;
-	}
+    zoom: 1;
+    &:before, &:after{
+        content: ' ';
+        display: table;
+    }
+    &:after{
+        clear: both;
+        visibility: hidden;
+        font-size: 0;
+        height: 0;
+    }
 }
 
 .link{
-	transition: color $transition-time ease-in-out;
+    transition: color $transition-time ease-in-out;
 }

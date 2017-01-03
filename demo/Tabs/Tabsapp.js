@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Tabs from './src/Tabs/Tabs';
-import TabPane from './src/Tabs/TabPane';
+import Tabs from '../../src/Tabs/Tabs';
+import TabPane from '../../src/Tabs/TabPane';
 
 ReactDom.render(
     <Tabs defaultActiveIndex="1" className="kz-tabs">

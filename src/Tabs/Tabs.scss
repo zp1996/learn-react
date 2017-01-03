@@ -4,65 +4,65 @@
 @import "../style/var.scss";
 
 *{
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 $tab-prefix-class: kz-tabs;
 
 .#{$tab-prefix-class} {
-	position: relative;
-	overflow: hidden;
-	color: $text-color;
-	font-family: $font-family;
-	@extend .clearfix;
-	&-nav {
-		list-style-type: none;
-		overflow: hidden;
-		border-bottom: 1px solid $border-color-base;
-		margin-bottom: 16px;
-	}
-	&-tabnav {
-		float: left;
-		padding: 8px 20px;
-		cursor: pointer;
-		&:hover {
-			color: $link-hover-color;
-		}
-		@extend .link;
-		&-active {
-			color: $link-color;
-		}
-		&-disabled {
-			cursor: not-allowed;
-			color: $disabled-color;
-			&:hover {
-				color: $disabled-color;
-			}
-		}
-	}
-	&-bar {
-		position: relative;
-	}
-	&-ink-bar {
-		width: 50px;
-		height: 2px;
-		background: $link-color;
-		position: absolute;
-		bottom: 0px;
-		transition: transform $transition-time $ease-in-out;
-	}
-	&-content {
-		display:flex;
-		width: 100%;
-		transition: margin-left $transition-time $ease-in-out;
-	}
-	&-tabpanel {
-		width: 100%;
-		flex-shrink: 0;
-		&-inactive {
-			opacity: 0;
-			height: 0;
-		}
-	}
+    position: relative;
+    overflow: hidden;
+    color: $text-color;
+    font-family: $font-family;
+    @extend .clearfix;
+    &-nav {
+        list-style-type: none;
+        overflow: hidden;
+        border-bottom: 1px solid $border-color-base;
+        margin-bottom: 16px;
+    }
+    &-tabnav {
+        float: left;
+        padding: 8px 20px;
+        cursor: pointer;
+        &:hover {
+            color: $link-hover-color;
+        }
+        @extend .link;
+        &-active {
+            color: $link-color;
+        }
+        &-disabled {
+            cursor: not-allowed;
+            color: $disabled-color;
+            &:hover {
+                color: $disabled-color;
+            }
+        }
+    }
+    &-bar {
+        position: relative;
+    }
+    &-ink-bar {
+        width: 50px;
+        height: 2px;
+        background: $link-color;
+        position: absolute;
+        bottom: 0px;
+        transition: transform $transition-time $ease-in-out;
+    }
+    &-content {
+        display:flex;
+        width: 100%;
+        transition: margin-left $transition-time $ease-in-out;
+    }
+    &-tabpanel {
+        width: 100%;
+        flex-shrink: 0;
+        &-inactive {
+            opacity: 0;
+            height: 0;
+        }
+    }
 }
