@@ -21,7 +21,6 @@ class Tabs extends Component {
     };
     constructor(props) {
         super(props);
-        this.handleTabClick = this.handleTabClick.bind(this);
         var activeIndex;
         if ('activeIndex' in this.props) {
             activeIndex = this.props.activeIndex;
@@ -61,7 +60,7 @@ class Tabs extends Component {
             <TabNav
                 classPrefix={classPrefix}
                 panels={children}
-                onTabClick={this.handleTabClick}
+                onTabClick={::this.handleTabClick}
                 activeIndex={this.state.activeIndex}
             />
         );      
