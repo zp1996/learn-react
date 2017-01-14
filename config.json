@@ -1,0 +1,10 @@
+{
+    "components": [
+        "Tabs",
+        "ColorPicker",
+        "Events",
+        "Gallery",
+        "ComponentCommunication"
+    ],
+    "port": 3000
+}

@@ -1,15 +1,16 @@
 const webpack = require('webpack'),
     path = require('path'),
+    config = require('./config.json'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     exec = require('child_process').exec,
     isProduction = process.env.NODE_ENV === 'production',
     entry_tools = isProduction ? [] :
             ([
-                'webpack-dev-server/client?http://localhost:3000',
+                `webpack-dev-server/client?http://localhost:${config.port}`,
                 'webpack/hot/only-dev-server'
             ]),
     demoPath = `${__dirname}/demo`,
-    components = ["Tabs", "ColorPicker"],
+    components = config.components,
     entrys = {};
 components.forEach(val => {
     entrys[val] = `${demoPath}/${val}/${val}app.js`;

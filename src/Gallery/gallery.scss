@@ -1,0 +1,35 @@
+@charset 'utf-8';
+@import "../style/var.scss";
+
+$figure-width: 320px;
+$figure-height: 360px;
+$img-width: 240px;
+$img-height: 240px;
+$className: image-figure;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: $font-family;
+}
+html, body {
+    background: #aaa;
+}
+.#{$className} {
+    width: $figure-width;
+    height: $figure-height;
+    box-sizing: border-box;
+    padding: ($figure-width - $img-width) / 2;
+    cursor: pointer;
+    background: #fff;
+    position: absolute;
+}
+.#{$className}-alt {
+    color: #a7a0a2;
+    text-align: center;
+    margin-top: 20px;
+}
+.#{$className}-img {
+    width: $img-width;
+    height: $img-height;
+}

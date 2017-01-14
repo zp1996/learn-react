@@ -12,5 +12,5 @@ ReactDom.render(
         <TabPane tab="tab 5" order="5">Content Panel of Tab 5</TabPane>
         <TabPane tab="tab 6" order="6" disabled>Content Panel of Tab 6</TabPane>
     </Tabs>
-    ,document.getElementById('tab-demo-card')
+    , document.getElementById('tab-demo-card')
 );
