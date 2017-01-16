@@ -5,5 +5,5 @@ if [ $handle != del ]
 then
 	node new-component.js --name=$1
 else
-	echo 'not support' 
+	node new-component.js --del=true --name=$2
 fi
