@@ -4,7 +4,8 @@
         "ColorPicker",
         "Events",
         "Gallery",
-        "ComponentCommunication"
+        "ComponentCommunication",
+        "Counter"
     ],
     "port": 3000
 }
