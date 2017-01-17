@@ -1,51 +1,76 @@
 import React, { Component, PropTypes } from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import styles from './Counter.scss';
 
+// 这些例子其实根本不用redux来做就可以
+
 const initState = {
-    value: 1
+    value: 1,
+    show: 1
 };
 
-function counter(state=initState, action) {
+function counterReducer(state=initState.value, action) {
     switch (action.type) {
         case 'INCREMENT':
-            state.value++;
-            return state;
+            return ++state;
         case 'DECREMENT':
-            state.value--;
-            return state;
+            return --state;
         default:
             return state;
     }
 }
 
-const store = createStore(counter);
+function displayReducer(state=initState.show, action) {
+    switch(action.type) {
+        case 'SHOW':
+            return 1;
+        case 'HIDE':
+            return 0;
+        default:
+            return state;
+    }
+}
+
+const reducer = combineReducers({
+    value: counterReducer,
+    show: displayReducer
+});
+
+const store = createStore(reducer);
 
 class Counter extends Component {
     constructor(props) {
         super(props);
         this.state = store.getState();
     }
-    static changeValue(type) {
-        store.dispatch({ type: type })
-        return store.getState();
+    changeValue(type) {
+        store.dispatch({ type: type });
+        this.setState({ 
+            ...store.getState()
+        });
     }
     add() {
-        this.setState({ 
-            ...Counter.changeValue('INCREMENT')
-        });
+        this.changeValue('INCREMENT');
     }
     sub() {
-        this.setState({ 
-            ...Counter.changeValue('DECREMENT')
-        });
+        this.changeValue('DECREMENT');
+    }
+    show() {
+        this.changeValue('SHOW');
+    }
+    hide() {
+        this.changeValue('HIDE');
     }
     render() {
+        const { show, value } = this.state;
         return (
             <div>
-                <p>{this.state.value}</p>
+                <p>{value}</p>
                 <button onClick={::this.add}>Add</button>
                 <button onClick={::this.sub}>Sub</button>
+                <p>{show}</p>
+                <button onClick={::this.show}>Show</button>
+                <button onClick={::this.hide}>hide</button>
             </div>
         );
     }

@@ -1,22 +1,27 @@
 import React, { Component, PropTypes } from 'react';
+import { createStore } from 'redux';
 import EventEmitter from './EventEmitter';
 
 const event = new EventEmitter();
 
 const data = {
     color: 'red'
+};
+
+function reducer(state=data, action) {
+    switch(action.type) {
+        case 'BLUE':
+            state.color = 'blue';
+            return state;
+        case 'GREEN':
+            state.color = 'green';
+            return state;
+        default: 
+            return state;
+    }
 }
 
-const util = {
-    componentDidMount: function() {
-        event.on('change', this.changeColor.bind(this));
-    },
-    changeColor: function(color) {
-        this.setState({ 
-            color: color 
-        });
-    },
-};
+const store = createStore(reducer);
 
 class NoRelation extends Component {
     constructor(props) {
@@ -61,18 +66,12 @@ class Button extends Component {
 }
 
 class Button1 extends Button {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return this.baseRender('blue');
     }
 }
 
 class Button2 extends Button {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return this.baseRender('green');
     }
