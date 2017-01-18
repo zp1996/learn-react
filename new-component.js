@@ -16,18 +16,16 @@ const upperName = CamelTo(name),
     src = `./src/${name}`,
     demo = `./demo/${name}`,
     tpl = {
-        html: function() {
+        ejs: function() {
             return (
 `<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>${name}</title>
-        <link rel="stylesheet" type="text/css" href="/build/css/${name}.style.css" />
+        <title><%= htmlWebpackPlugin.options.title %></title>
     </head>
     <body>
         <div id="${upperName}-demo-card"></div>
-        <script type="text/javascript" src="/build/js/${name}.js"></script>
     </body>
 </html>`);
         },
@@ -59,6 +57,7 @@ function CamelTo(name) {
         .replace(/(\w)([A-Z])/g, '$1-$2')
         .toLowerCase();
 }
+
 if (!del) {
     exec(`mkdir ${src}`, function() {
         fs.writeFile(
@@ -72,8 +71,8 @@ if (!del) {
     });
     exec(`mkdir ${demo}`, function() {
         fs.writeFile(
-            `${demo}/index.html`, 
-            tpl.html()
+            `${demo}/index.ejs`, 
+            tpl.ejs()
         );
         fs.writeFile(
             `${demo}/${name}app.js`,

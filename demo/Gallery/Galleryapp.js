@@ -5,5 +5,5 @@ import Gallery from '../../src/Gallery/image-figure';
 ReactDom.render(
 	<Gallery 
 		url="/images/Gallery/first.jpg" 
-	/>, document.getElementById('gallery-demo')
+	/>, document.getElementById('gallery-demo-card')
 );

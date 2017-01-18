@@ -23,7 +23,6 @@ const mapDispatchToProps = {
     onTodoClick: toggleTodo
 };
 
-
 // 将todos与onTodoClick注入
 const VisibleTodoList = connect(
     mapStateToProps,

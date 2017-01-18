@@ -2,6 +2,7 @@ const webpack = require('webpack'),
     path = require('path'),
     config = require('./config.json'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
     exec = require('child_process').exec,
     isProduction = process.env.NODE_ENV === 'production',
     entry_tools = isProduction ? [] :
@@ -11,10 +12,19 @@ const webpack = require('webpack'),
             ]),
     demoPath = `${__dirname}/demo`,
     components = config.components,
-    entrys = {};
+    entrys = {},
+    htmlWebpackPlugins = [];
+
 components.forEach(val => {
     entrys[val] = `${demoPath}/${val}/${val}app.js`;
+    htmlWebpackPlugins.push(new HtmlWebpackPlugin({
+        title: val,
+        template: `${demoPath}/${val}/index.ejs`,
+        filename: `${demoPath}/${val}/index.html`,
+        chunks: [val] 
+    }));
 });
+
 // 首先删除之前打包文件
 exec('rm -r -f ./build', () => {
     console.log('delete old output file, now is to bundle');
@@ -25,7 +35,7 @@ module.exports = {
     devtool: isProduction ? '' : 'cheap-module-eval-source-map',  // 生产环境中用
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'js/[name].js',
+        filename: 'js/[name].[chunkhash:8].js',
         publicPath: '/build/'
     },
     module: {
@@ -46,13 +56,13 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
-        new ExtractTextPlugin('css/[name].style.css'),
-        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin('css/[name].[chunkhash:8].style.css'),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
-        })
+        }),
+        ...htmlWebpackPlugins
     ]
 };
