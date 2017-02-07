@@ -13,7 +13,12 @@ const webpack = require('webpack'),
     demoPath = `${__dirname}/demo`,
     components = config.components,
     entrys = {},
-    htmlWebpackPlugins = [];
+    htmlWebpackPlugins = [],
+    plugins = isProduction ? 
+            () => [ new ExtractTextPlugin('css/[name].[chunkhash:8].style.css') ] :
+            () => [ new ExtractTextPlugin('css/[name].style.css') , new webpack.HotModuleReplacementPlugin() ],
+    jsFilename = isProduction ? 'js/[name].[chunkhash:8].js' : 'js/[name].js';
+
 
 components.forEach(val => {
     entrys[val] = `${demoPath}/${val}/${val}app.js`;
@@ -35,7 +40,7 @@ module.exports = {
     devtool: isProduction ? '' : 'cheap-module-eval-source-map',  // 生产环境中用
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'js/[name].[chunkhash:8].js',
+        filename: jsFilename,
         publicPath: '/build/'
     },
     module: {
@@ -56,7 +61,7 @@ module.exports = {
         require('autoprefixer')
     ],
     plugins: [
-        new ExtractTextPlugin('css/[name].[chunkhash:8].style.css'),
+        ...(plugins()),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {

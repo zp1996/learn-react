@@ -1,1 +1,9 @@
 @charset "utf-8";
+
+a {
+	margin: 20px;
+	color: #666;
+	&:hover {
+		color: blue;
+	}
+}

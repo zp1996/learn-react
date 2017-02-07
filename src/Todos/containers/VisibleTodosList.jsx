@@ -7,9 +7,9 @@ function getTodos(todos, filter) {
         case 'SHOW_ALL':
             return todos;
         case 'SHOW_COMPLETE':
-            return todos.filter(todo => todo.compelted);
+            return todos.filter(todo => todo.completed);
         case 'SHOW_ACTIVE':
-            return todo.filter(todo => !todo.compelted);
+            return todos.filter(todo => !todo.completed);
         default: 
             throw new Error('Unknow filter');
     }

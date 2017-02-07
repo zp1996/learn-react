@@ -5,4 +5,4 @@ import Todos from '../../src/Todos/index';
 ReactDom.render(
 	<Todos />
     , document.getElementById('todos-demo-card')
-)
+);

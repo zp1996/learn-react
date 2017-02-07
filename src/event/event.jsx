@@ -9,9 +9,6 @@ class EventTest extends Component {
         e.stopPropagation();
         console.log('click child div');
     }
-    // handleClick() {
-    //     console.log('click child child div');
-    // }
     componentDidMount() {
         document.querySelector('.parent').addEventListener('click', this.handleParentClick);
     }
