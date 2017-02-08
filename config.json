@@ -6,7 +6,8 @@
         "Gallery",
         "ComponentCommunication",
         "Counter",
-        "Todos"
+        "Todos",
+        "Comment"
     ],
     "port": 3000
 }
