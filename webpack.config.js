@@ -14,7 +14,7 @@ const webpack = require('webpack'),
     components = config.components,
     entrys = {},
     htmlWebpackPlugins = [],
-    plugins = isProduction ? 
+    plugins = isProduction ?
             () => [ new ExtractTextPlugin('css/[name].[chunkhash:8].style.css') ] :
             () => [ new ExtractTextPlugin('css/[name].style.css') , new webpack.HotModuleReplacementPlugin() ],
     jsFilename = isProduction ? 'js/[name].[chunkhash:8].js' : 'js/[name].js';
@@ -22,11 +22,12 @@ const webpack = require('webpack'),
 
 components.forEach(val => {
     entrys[val] = `${demoPath}/${val}/${val}app.js`;
+    console.log(val);
     htmlWebpackPlugins.push(new HtmlWebpackPlugin({
         title: val,
         template: `${demoPath}/${val}/index.ejs`,
         filename: `${demoPath}/${val}/index.html`,
-        chunks: [val] 
+        chunks: [val]
     }));
 });
 

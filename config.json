@@ -7,7 +7,8 @@
         "ComponentCommunication",
         "Counter",
         "Todos",
-        "Comment"
+        "Comment",
+        "state"
     ],
     "port": 3000
 }
